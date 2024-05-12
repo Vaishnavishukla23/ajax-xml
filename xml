@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cars>
+    <car>
+        <model>Toyota Camry</model>
+        <year>2022</year>
+        <color>Blue</color>
+        <price>$25,000</price>
+    </car>
+    <car>
+        <model>Honda Accord</model>
+        <year>2021</year>
+        <color>Red</color>
+        <price>$23,000</price>
+    </car>
+    <car>
+        <model>Ford Mustang</model>
+        <year>2023</year>
+        <color>Yellow</color>
+        <price>$30,000</price>
+    </car>
+</cars>
