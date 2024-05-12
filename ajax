@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars Information</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var xmlDoc = this.responseXML;
+                    var cars = xmlDoc.getElementsByTagName("car");
+
+                    var table = document.createElement("table");
+                    var headerRow = table.insertRow();
+                    var headers = ["Model", "Year", "Color", "Price"];
+                    for (var i = 0; i < headers.length; i++) {
+                        var headerCell = headerRow.insertCell();
+                        headerCell.textContent = headers[i];
+                    }
+
+                    for (var i = 0; i < cars.length; i++) {
+                        var car = cars[i];
+                        var row = table.insertRow();
+                        var modelCell = row.insertCell();
+                        modelCell.textContent = car.getElementsByTagName("model")[0].textContent;
+                        var yearCell = row.insertCell();
+                        yearCell.textContent = car.getElementsByTagName("year")[0].textContent;
+                        var colorCell = row.insertCell();
+                        colorCell.textContent = car.getElementsByTagName("color")[0].textContent;
+                        var priceCell = row.insertCell();
+                        priceCell.textContent = car.getElementsByTagName("price")[0].textContent;
+                    }
+
+                    document.body.appendChild(table);
+                } else if (this.readyState == 4) {
+                    document.body.innerText = "Error loading cars information.";
+                }
+            };
+            xhttp.open("GET", "cars.xml", true);
+            xhttp.send();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
